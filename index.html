@@ -8,6 +8,7 @@
 <link rel="apple-touch-icon" href="https://i.postimg.cc/yNzGpwrR/asd.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -53,17 +54,30 @@ nav{
 .hero-sub{font-size:15px;color:#666;line-height:1.7;max-width:420px;margin:0 auto 2rem;}
 
 /* HERO VIDEO */
+.hero-video-title{
+  text-align:center;margin:0 auto 2rem;font-size:1.2rem;font-weight:400;letter-spacing:-0.5px;
+  font-family:'Helvetica',sans-serif;color:#111;
+  background:#fff;border:1px solid #98C0FF;border-radius:50px;padding:0.5rem 1.5rem;
+  display:table;position:relative;
+  animation:fadeInUp 0.8s ease 0.3s both,slideInScale 0.9s ease 0.3s both;
+}
+.hero-video-title::after{
+  content:'';position:absolute;bottom:-2rem;left:50%;transform:translateX(-50%);
+  width:1px;height:1.5rem;background:#98C0FF;
+}
+@keyframes slideInScale{from{opacity:0;transform:scale(0.95) translateY(12px);}to{opacity:1;transform:scale(1) translateY(0);}}
 .hero-video{
-  margin:0 1.5rem 2rem;border-radius:16px;overflow:hidden;
+  margin:0 1.5rem 2rem;border-radius:24px;overflow:hidden;
   background:#111;aspect-ratio:16/9;position:relative;
-  max-width:680px;margin-left:auto;margin-right:auto;
+  max-width:680px;margin-left:auto;margin-right:auto;margin-top:1rem;
+  box-shadow:0 8px 32px rgba(37,99,235,0.12);
 }
 .hero-video iframe{width:100%;height:100%;border:none;display:block;}
 .hero-video-placeholder{
   width:100%;height:100%;min-height:200px;
   display:flex;align-items:center;justify-content:center;
   flex-direction:column;gap:1rem;
-  background:linear-gradient(135deg,rgba(26,26,46,0.72),rgba(22,33,62,0.72)),url('https://img.youtube.com/vi/L7QQPul-iIw/maxresdefault.jpg') center/cover no-repeat;
+  background:url('https://img.youtube.com/vi/L7QQPul-iIw/maxresdefault.jpg') center/cover no-repeat;
   color:#fff;
 }
 .play-btn-big{
@@ -73,7 +87,7 @@ nav{
 }
 .play-btn-big:hover{transform:scale(1.08);}
 .play-btn-big svg{width:24px;height:24px;fill:#fff;margin-left:3px;}
-.hero-video-label{font-size:13px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;}
+.hero-video-label{display:none;}
 
 /* BOOK CALL */
 .book-wrap{text-align:center;margin:0 1.5rem 3rem;}
@@ -89,9 +103,30 @@ nav{
 
 /* STATS */
 .stats{
-  display:flex;justify-content:center;
+  display:flex;justify-content:center;align-items:center;
   border-top:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0;
-  margin-bottom:3rem;
+  margin-bottom:3rem;gap:3rem;flex-wrap:wrap;
+}
+.stats-avatars{
+  display:flex;align-items:center;margin-right:0.2rem;
+}
+.avatar-stack{
+  display:flex;align-items:center;margin:0;padding:0;
+}
+.avatar-item{
+  width:36px;height:36px;border-radius:50%;border:2px solid #fff;overflow:hidden;
+  margin-left:-10px;display:flex;align-items:center;justify-content:center;background:#f0f0f0;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+.avatar-item:first-child{
+  margin-left:0;
+}
+.avatar-item img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.stat-group{
+  display:flex;gap:2rem;
+  align-items:center;
 }
 .stat{flex:1;max-width:160px;text-align:center;padding:1.5rem 1rem;border-right:1px solid #f0f0f0;}
 .stat:last-child{border-right:none;}
@@ -281,14 +316,16 @@ footer{
   .hero h1{font-size:clamp(1.4rem,5.5vw,1.8rem);line-height:1.2;margin-bottom:0.8rem;}
   .hero-sub{font-size:13px;line-height:1.6;margin-bottom:1.5rem;max-width:100%;}
   
-  .hero-video{margin:0 1rem 1.5rem;}
-  .play-btn-big{width:48px;height:48px;}
-  .play-btn-big svg{width:18px;height:18px;}
-  .hero-video-label{font-size:11px;}
+  .hero-video-title{margin:0 auto 2rem;font-size:1rem;padding:0.4rem 1.2rem;}
+  .hero-video-title::after{bottom:-1.8rem;height:1.2rem;}
+  .hero-video{margin:0 1rem 1.5rem;border-radius:18px;}
   
-  .stats{flex-wrap:wrap;margin-bottom:2rem;padding:1rem 0;border-top:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0;}
+  .stats{flex-direction:column;gap:1.5rem;}
+  .stats-avatars{margin-right:0;margin-bottom:1rem;}
+  .avatar-item{width:28px;height:28px;border:2px solid #fff;margin-left:-6px;}
+  .stat-group{flex-direction:column;gap:0;}
+  .stat{border-right:1px solid #f0f0f0;min-width:33%;}
   .stat{flex:1;min-width:32%;text-align:center;padding:1rem 0.5rem;border-right:1px solid #f0f0f0;}
-  .stat:nth-child(3n){border-right:none;}
   .stat-num{font-size:1.4rem;}
   .stat-label{font-size:11px;margin-top:4px;}
   
@@ -379,6 +416,7 @@ footer{
   <p class="hero-sub">I help creators, entrepreneurs, and agencies turn content into stand-out storytelling with crisp cuts, bold pacing, and polished visual direction.</p>
 </section>
 
+<h2 class="hero-video-title">A Little About Me</h2>
 <div class="hero-video" id="hero-video" data-video-id="L7QQPul-iIw">
   <div class="hero-video-placeholder">
     <div class="play-btn-big" id="hero-play">
@@ -389,9 +427,18 @@ footer{
 </div> 
 
 <div class="stats">
-  <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Happy clients</div></div>
-  <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Videos edited</div></div>
-  <div class="stat"><div class="stat-num">1M+</div><div class="stat-label">Views generated</div></div>
+  <div class="stats-avatars">
+    <div class="avatar-stack">
+      <div class="avatar-item"><img src="https://i.postimg.cc/YqQgtZCT/headshot-bridge.jpg" alt="Client 1"></div>
+      <div class="avatar-item"><img src="https://i.postimg.cc/FsrCSykx/bronq.jpg" alt="Client 2"></div>
+      <div class="avatar-item"><img src="https://i.postimg.cc/5N4KzBQS/Salman.jpg" alt="Client 3"></div>
+    </div>
+  </div>
+  <div class="stat-group">
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Happy clients</div></div>
+    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Videos edited</div></div>
+    <div class="stat"><div class="stat-num">1M+</div><div class="stat-label">Views generated</div></div>
+  </div>
 </div>
 
 <!-- MY BEST WORK -->
@@ -594,9 +641,10 @@ footer{
 
   <script>
   (function(){
-    function createIframe(id, hideBrand){
+    function createIframe(id, hideBrand, autoplayMuted){
       var controls = hideBrand ? 0 : 1;
-      var src = 'https://www.youtube.com/embed/'+id+'?rel=0&modestbranding=1&autoplay=1&playsinline=1&iv_load_policy=3&controls='+controls;
+      var muted = autoplayMuted ? '&muted=1' : '';
+      var src = 'https://www.youtube.com/embed/'+id+'?rel=0&modestbranding=1&autoplay=1&playsinline=1&iv_load_policy=3&controls='+controls+muted;
       return '<div class="video-inline"><iframe src="'+src+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
     }
 
@@ -604,7 +652,7 @@ footer{
       var hero = document.getElementById('hero-video');
       if(!hero || hero.classList.contains('playing')) return;
       hero.classList.add('playing');
-      hero.innerHTML = createIframe(id, true);
+      hero.innerHTML = createIframe(id, true, true);
     }
 
     function playCard(card, id){
@@ -619,14 +667,27 @@ footer{
       }
     }
 
-    document.addEventListener('click', function(e){
-      if(e.target.closest && e.target.closest('#hero-play')){
-        e.preventDefault();
-        var hero = document.getElementById('hero-video');
-        var id = hero && hero.dataset.videoId;
-        if(id) playHero(id);
-        return;
+    // Auto-play hero video on page load
+    window.addEventListener('load', function(){
+      var hero = document.getElementById('hero-video');
+      var id = hero && hero.dataset.videoId;
+      if(id && !hero.classList.contains('playing')) {
+        setTimeout(function(){
+          playHero(id);
+        }, 500);
       }
+    });
+
+    // Auto-play hero video on page load
+    window.addEventListener('load', function(){
+      var hero = document.getElementById('hero-video');
+      var id = hero && hero.dataset.videoId;
+      if(id && !hero.classList.contains('playing')) {
+        setTimeout(function(){
+          playHero(id);
+        }, 500);
+      }
+    });
 
       var card = e.target.closest && e.target.closest('.playable');
       if(card){
