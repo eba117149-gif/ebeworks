@@ -79,7 +79,7 @@ nav{
   width:100%;height:100%;min-height:200px;
   display:flex;align-items:center;justify-content:center;
   flex-direction:column;gap:1rem;
-  background:url('https://img.youtube.com/vi/L7QQPul-iIw/maxresdefault.jpg') center/cover no-repeat;
+  background:linear-gradient(160deg,#1a1a2e,#16213e);
   color:#fff;
 }
 .play-btn-big{
@@ -170,7 +170,7 @@ nav{
   display:flex;align-items:center;justify-content:center;
   position:relative;
 }
-.longform-thumb img, .reel-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.longform-thumb img, .reel-card img, .podcast-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 .longform-thumb-inner, .reel-thumb-inner{position:relative;z-index:1;}
 .longform-thumb-inner{
   width:100%;height:100%;
@@ -206,10 +206,58 @@ nav{
 .longform-type{font-size:10px;color:#aaa;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;}
 .longform-title{font-size:13px;font-weight:600;color:#111;line-height:1.3;}
 
+/* PODCAST TRAILERS (horizontal) */
+.podcast-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  max-width:680px;margin:0 auto 2.5rem;
+}
+.podcast-card{
+  border-radius:12px;overflow:hidden;
+  background:#111;cursor:pointer;
+  position:relative;
+  text-decoration:none;
+  display:block;
+}
+.podcast-thumb{
+  width:100%;aspect-ratio:16/9;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  background:linear-gradient(160deg,#241b3a,#3a1b57);
+}
+.podcast-thumb video{width:100%;height:100%;object-fit:cover;display:block;background:#111;}
+.podcast-thumb-inner{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:8px;position:absolute;inset:0;z-index:1;
+}
+.podcast-play{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.2s;
+}
+.podcast-card:hover .podcast-play{background:rgba(255,255,255,0.25);}
+.podcast-play svg{width:16px;height:16px;fill:#fff;margin-left:2px;}
+.podcast-info{
+  padding:0.75rem 0.9rem 1rem;
+  background:#fff;border:1px solid #f0f0f0;
+  border-top:none;
+}
+.podcast-type{font-size:10px;color:#aaa;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;}
+.podcast-title{font-size:13px;font-weight:600;color:#111;line-height:1.3;}
+
+/* LONGFORM PLACEHOLDER CARD (coming soon) */
+.longform-card.coming-soon{cursor:default;}
+.longform-card.coming-soon .longform-thumb{background:linear-gradient(160deg,#2a2a2a,#111);}
+.coming-soon-text{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1.5px;text-transform:uppercase;text-align:center;padding:0 1rem;}
+
 /* REELS GRID */
 .reels-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:10px;max-width:680px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:10px;max-width:460px;margin:0 auto;
 }
 .animate{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease;}
 .animate.visible{opacity:1;transform:none;}
@@ -225,6 +273,7 @@ nav{
   align-items:center;justify-content:center;
   gap:8px;padding:1rem;text-align:center;
 }
+.reel-thumb-inner video{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;}
 .reel-thumb-icon{font-size:24px;color:rgba(255,255,255,0.15);}
 .reel-thumb-text{display:none;}
 .reel-overlay{
@@ -347,6 +396,11 @@ footer {
   .longform-type{font-size:9px;}
   .longform-title{font-size:12px;}
   .view-badge{font-size:10px;padding:2px 8px;}
+  .podcast-grid{grid-template-columns:1fr;gap:10px;max-width:100%;margin:0 auto 2rem;}
+  .podcast-card{border-radius:10px;}
+  .podcast-info{padding:0.7rem 0.8rem 0.9rem;}
+  .podcast-type{font-size:9px;}
+  .podcast-title{font-size:12px;}
   .reels-grid{grid-template-columns:repeat(2,1fr);gap:8px;max-width:100%;margin:0 auto;}
   .reel-card{border-radius:10px;}
   .reel-label{padding:1rem 0.6rem 0.6rem;}
@@ -388,12 +442,14 @@ footer {
 
 /* Inline player styles */
 .video-inline{position:relative;width:100%;height:100%;}
-.video-inline iframe{width:100%;height:100%;border:0;display:block;}
+.video-inline video{width:100%;height:100%;border:0;display:block;object-fit:cover;background:#000;}
 .longform-card.playing .longform-play,
 .reel-card.playing .reel-overlay{display:none !important;}
 .longform-card.playing .longform-info,
 .reel-card.playing .reel-label{display:none !important;}
 .reel-card.playing .reel-thumb-inner{padding:0;}
+.podcast-card.playing .podcast-play{display:none !important;}
+.podcast-card.playing .podcast-info{display:none !important;}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8XJD6R6J3"></script>
@@ -426,8 +482,8 @@ footer {
 </section>
 
 <h2 class="hero-video-title">A Little About Me</h2>
-<div class="hero-video" id="hero-video" data-video-id="L7QQPul-iIw">
-  <div class="hero-video-placeholder" id="hero-placeholder">
+<div class="hero-video" id="hero-video" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/My+intro+final.mp4">
+  <div class="hero-video-placeholder" id="hero-placeholder" style="background:url('https://f005.backblazeb2.com/file/ebe-portfolio/Thumbnails/my+intro.png') center/cover no-repeat;">
     <div class="play-btn-big" id="hero-play">
       <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
     </div>
@@ -463,59 +519,90 @@ footer {
 
   <div class="longform-grid">
 
-    <div class="longform-card playable" data-video-id="JcbI6Omyj1c" style="background:linear-gradient(160deg,#1a1a2e,#16213e);">
+    <div class="longform-card coming-soon" style="background:linear-gradient(160deg,#2a2a2a,#111);">
       <div class="longform-thumb">
-        <img src="https://img.youtube.com/vi/JcbI6Omyj1c/maxresdefault.jpg" alt="Longform 1 thumbnail">
         <div class="longform-thumb-inner">
-          <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="coming-soon-text">Coming soon</div>
         </div>
       </div>
-      <div class="view-badge">
-        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-        5.6K
-      </div>
       <div class="longform-info">
-        <div class="longform-type">YouTube · Property investment strategist</div>
-        <div class="longform-title">THE BLOCK 2025 FLOP</div>
+        <div class="longform-type">YouTube · Client channel</div>
+        <div class="longform-title">New edit — link coming soon</div>
       </div>
     </div>
 
-    <div class="longform-card playable" data-video-id="wqrKlKauFm0" style="background:linear-gradient(160deg,#0f2027,#203a43);">
+    <div class="longform-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Josef+2.mp4" style="background:linear-gradient(160deg,#0f2027,#203a43);">
       <div class="longform-thumb">
-        <img src="https://img.youtube.com/vi/wqrKlKauFm0/maxresdefault.jpg" alt="Longform 2 thumbnail">
+        <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Thumbnails/Josef+2.png" alt="Josef 2 thumbnail">
         <div class="longform-thumb-inner">
           <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
       </div>
       <div class="longform-info">
-        <div class="longform-type">YouTube · PROPFIRM COMPANY</div>
-        <div class="longform-title">The truth no one tells you</div>
+        <div class="longform-type">Client project</div>
+        <div class="longform-title">Josef — Edit 2</div>
       </div>
     </div>
 
-    <div class="longform-card playable" data-video-id="qQYb7W2U9tg" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
+    <div class="longform-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Trial+1.mp4" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
       <div class="longform-thumb">
-        <img src="https://img.youtube.com/vi/qQYb7W2U9tg/maxresdefault.jpg" alt="Longform 3 thumbnail">
+        <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Thumbnails/Trail+1+long.png" alt="Trial 1 thumbnail">
         <div class="longform-thumb-inner">
           <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
       </div>
       <div class="longform-info">
-        <div class="longform-type">YouTube · TRADING COMPANY</div>
-        <div class="longform-title">Wealth in Prop Trading</div>
+        <div class="longform-type">Client project</div>
+        <div class="longform-title">Trial Edit 1</div>
       </div>
     </div>
 
-    <div class="longform-card playable" data-video-id="ImUDeSQ0nvA" style="background:linear-gradient(160deg,#1a0533,#2d0a57);">
+    <div class="longform-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Trial+2+samu.mp4" style="background:linear-gradient(160deg,#1a0533,#2d0a57);">
       <div class="longform-thumb">
-        <img src="https://img.youtube.com/vi/ImUDeSQ0nvA/maxresdefault.jpg" alt="Longform 4 thumbnail">
+        <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Thumbnails/Trial+2+samu.png" alt="Trial 2 Samu thumbnail">
         <div class="longform-thumb-inner">
           <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
       </div>
       <div class="longform-info">
-        <div class="longform-type">YouTube · PERSONAL BRAND</div>
-        <div class="longform-title">Reason why most fail.</div>
+        <div class="longform-type">Client project</div>
+        <div class="longform-title">Trial Edit 2 — Samu</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PODCAST TRAILERS -->
+  <div class="section-divider" style="max-width:680px;margin:0 auto 1.2rem;">
+    <span class="section-divider-label">Podcast Trailers</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="podcast-grid">
+
+    <div class="podcast-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Trailer+1.mp4">
+      <div class="podcast-thumb">
+        <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Thumbnails/Trailer+1+for+podcast.png" alt="Trailer 1 thumbnail">
+        <div class="podcast-thumb-inner">
+          <div class="podcast-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="podcast-info">
+        <div class="podcast-type">Podcast Trailer</div>
+        <div class="podcast-title">Trailer 1</div>
+      </div>
+    </div>
+
+    <div class="podcast-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Trailer+2.mp4">
+      <div class="podcast-thumb">
+        <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Thumbnails/Trailer+2+podcast.png" alt="Trailer 2 thumbnail">
+        <div class="podcast-thumb-inner">
+          <div class="podcast-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="podcast-info">
+        <div class="podcast-type">Podcast Trailer</div>
+        <div class="podcast-title">Trailer 2</div>
       </div>
     </div>
 
@@ -529,75 +616,63 @@ footer {
 
   <div class="reels-grid">
 
-    <div class="reel-card playable" data-video-id="z90FpQtm8Ho" style="background:linear-gradient(160deg,#1a1a2e,#0f3460);">
-      <img src="https://img.youtube.com/vi/z90FpQtm8Ho/hqdefault.jpg" alt="Short 1 thumbnail">
+    <div class="reel-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+1+Teach+a+man+to+fish-.mp4" style="background:linear-gradient(160deg,#1a1a2e,#0f3460);">
+      <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Thumbnails/Vid+1+teachaman+tofish.png" alt="Teach a man to fish thumbnail">
       <div class="reel-thumb-inner">
         <div class="reel-thumb-icon">▶</div>
       </div>
       <div class="reel-overlay"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="reel-label">
-        <div class="reel-label-text">Trading company</div>
+        <div class="reel-label-text">Teach a man to fish</div>
         <div class="reel-label-niche">Short 1</div>
       </div>
     </div>
 
-    <div class="reel-card playable" data-video-id="_9bJhVPhWFs" style="background:linear-gradient(160deg,#0f2027,#203a43);">
-      <img src="https://img.youtube.com/vi/_9bJhVPhWFs/hqdefault.jpg" alt="Short 2 thumbnail">
+    <div class="reel-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+2+What+Is+an+ECN+Account+and+Why+Should+You+Care--.mp4" style="background:linear-gradient(160deg,#0f2027,#203a43);">
+      <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Thumbnails/Vid+2+what+is+ecn.png" alt="What Is an ECN Account thumbnail">
       <div class="reel-thumb-inner">
         <div class="reel-thumb-icon">▶</div>
       </div>
       <div class="reel-overlay"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="reel-label">
-        <div class="reel-label-text">Prop firm business</div>
+        <div class="reel-label-text">What Is an ECN Account</div>
         <div class="reel-label-niche">Short 2</div>
       </div>
     </div>
 
-    <div class="reel-card playable" data-video-id="MRwe5P5wEYw" style="background:linear-gradient(160deg,#1a1a2e,#16213e);">
-      <img src="https://img.youtube.com/vi/MRwe5P5wEYw/hqdefault.jpg" alt="Short 3 thumbnail">
+    <div class="reel-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+3+1+Step+vs+2+Step.mp4" style="background:linear-gradient(160deg,#1a1a2e,#16213e);">
+      <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Thumbnails/Vid+3+1+step+vs+2+step.png" alt="1 Step vs 2 Step thumbnail">
       <div class="reel-thumb-inner">
         <div class="reel-thumb-icon">▶</div>
       </div>
       <div class="reel-overlay"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="reel-label">
-        <div class="reel-label-text">Trading Coach</div>
+        <div class="reel-label-text">1 Step vs 2 Step</div>
         <div class="reel-label-niche">Short 3</div>
       </div>
     </div>
 
-    <div class="reel-card playable" data-video-id="X5BIf289ntE" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
-      <img src="https://img.youtube.com/vi/X5BIf289ntE/hqdefault.jpg" alt="Short 4 thumbnail">
+    <div class="reel-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+6+The+Virtual+Capital+Trap.mp4" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
+      <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Thumbnails/Vid+6+the+virtual.png" alt="The Virtual Capital Trap thumbnail">
       <div class="reel-thumb-inner">
         <div class="reel-thumb-icon">▶</div>
       </div>
       <div class="reel-overlay"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="reel-label">
-        <div class="reel-label-text">Business coach</div>
+        <div class="reel-label-text">The Virtual Capital Trap</div>
         <div class="reel-label-niche">Short 4</div>
       </div>
     </div>
 
-    <div class="reel-card playable" data-video-id="WHekCba34y8" style="background:linear-gradient(160deg,#1a0533,#2d0a57);">
-      <img src="https://img.youtube.com/vi/WHekCba34y8/hqdefault.jpg" alt="Short 5 thumbnail">
+    <div class="reel-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Video+1+the+headline+trade.mp4" style="background:linear-gradient(160deg,#0d1b2a,#1b263b);">
+      <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Thumbnails/Vid+1+the+headline.png" alt="The Headline Trade thumbnail">
       <div class="reel-thumb-inner">
         <div class="reel-thumb-icon">▶</div>
       </div>
       <div class="reel-overlay"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="reel-label">
-        <div class="reel-label-text">E-commerce niche</div>
+        <div class="reel-label-text">The Headline Trade</div>
         <div class="reel-label-niche">Short 5</div>
-      </div>
-    </div>
-
-    <div class="reel-card playable" data-video-id="RSnNFKToBpM" style="background:linear-gradient(160deg,#0d1b2a,#1b263b);">
-      <img src="https://img.youtube.com/vi/RSnNFKToBpM/hqdefault.jpg" alt="Short 6 thumbnail">
-      <div class="reel-thumb-inner">
-        <div class="reel-thumb-icon">▶</div>
-      </div>
-      <div class="reel-overlay"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="reel-label">
-        <div class="reel-label-text">Prop trading company</div>
-        <div class="reel-label-niche">Short 6</div>
       </div>
     </div>
 
@@ -638,57 +713,56 @@ footer {
 <script>
 (function(){
 
-  function createIframe(id, controls){
-    var ctrl = controls ? 1 : 0;
-    var src = 'https://www.youtube.com/embed/' + id
-      + '?rel=0&modestbranding=1&autoplay=1&playsinline=1&iv_load_policy=3&controls=' + ctrl;
-    return '<div class="video-inline"><iframe src="' + src
-      + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+  function createVideoTag(src){
+    return '<div class="video-inline"><video src="' + src
+      + '" controls autoplay playsinline preload="metadata"></video></div>';
   }
 
   /* ── Hero video ── */
-  function playHero(id){
+  function playHero(src){
     var hero = document.getElementById('hero-video');
     if(!hero || hero.classList.contains('playing')) return;
     hero.classList.add('playing');
-    var src = 'https://www.youtube.com/embed/' + id
-      + '?rel=0&modestbranding=1&autoplay=1&mute=1&playsinline=1&iv_load_policy=3&controls=1';
-    hero.innerHTML = '<div class="video-inline"><iframe src="' + src
-      + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+    hero.innerHTML = '<div class="video-inline"><video src="' + src
+      + '" controls autoplay muted playsinline preload="metadata"></video></div>';
   }
 
   document.getElementById('hero-play').addEventListener('click', function(){
     var hero = document.getElementById('hero-video');
-    var id = hero.dataset.videoId;
-    if(id) playHero(id);
+    var src = hero.dataset.videoSrc;
+    if(src) playHero(src);
   });
 
   document.getElementById('hero-video').addEventListener('click', function(){
-    var id = this.dataset.videoId;
-    if(id) playHero(id);
+    var src = this.dataset.videoSrc;
+    if(src) playHero(src);
   });
 
-  /* ── Portfolio cards ── */
-  function playCard(card, id){
+  /* ── Portfolio cards (longform, podcast, reels) ── */
+  function playCard(card, src){
     if(!card || card.classList.contains('playing')) return;
     card.classList.add('playing');
     if(card.classList.contains('longform-card')){
       var thumb = card.querySelector('.longform-thumb');
       if(thumb){
-        thumb.innerHTML = createIframe(id, true);
+        thumb.innerHTML = createVideoTag(src);
         thumb.style.cssText = 'position:relative;width:100%;aspect-ratio:16/9;';
+      }
+    } else if(card.classList.contains('podcast-card')){
+      var pthumb = card.querySelector('.podcast-thumb');
+      if(pthumb){
+        pthumb.innerHTML = createVideoTag(src);
+        pthumb.style.cssText = 'position:relative;width:100%;aspect-ratio:16/9;';
       }
     } else if(card.classList.contains('reel-card')){
       var inner = card.querySelector('.reel-thumb-inner');
       var overlay = card.querySelector('.reel-overlay');
       var label = card.querySelector('.reel-label');
-      var img = card.querySelector('img');
-      if(img) img.style.display = 'none';
       if(overlay) overlay.style.display = 'none';
       if(label) label.style.display = 'none';
       if(inner){
         inner.style.cssText = 'position:absolute;inset:0;padding:0;width:100%;height:100%;';
-        inner.innerHTML = createIframe(id, true);
+        inner.innerHTML = createVideoTag(src);
       }
     }
   }
@@ -697,13 +771,13 @@ footer {
   cards.forEach(function(card){
     card.addEventListener('click', function(e){
       e.preventDefault();
-      var id = card.getAttribute('data-video-id');
-      if(id) playCard(card, id);
+      var src = card.getAttribute('data-video-src');
+      if(src && src !== 'PLACEHOLDER_VID2_URL') playCard(card, src);
     });
   });
 
   /* ── Scroll animations ── */
-  var animated = document.querySelectorAll('.hero h1, .hero-sub, .stat, .work-title, .work-subtitle, .longform-card, .reel-card, .testimonials h2');
+  var animated = document.querySelectorAll('.hero h1, .hero-sub, .stat, .work-title, .work-subtitle, .longform-card, .podcast-card, .reel-card, .testimonials h2');
   animated.forEach(function(item){ item.classList.add('animate'); });
 
   var observer = new IntersectionObserver(function(entries){
