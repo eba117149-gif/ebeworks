@@ -165,6 +165,7 @@ nav{
   text-decoration:none;
   display:block;
 }
+.longform-grid .longform-card:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - 6px);justify-self:center;}
 .longform-thumb{
   width:100%;aspect-ratio:16/9;
   display:flex;align-items:center;justify-content:center;
@@ -428,6 +429,7 @@ footer {
   .section-divider-label{font-size:10px;}
   .longform-grid{grid-template-columns:1fr;gap:10px;max-width:100%;margin:0 auto 2rem;}
   .longform-card{border-radius:10px;}
+  .longform-grid .longform-card:last-child:nth-child(odd){width:100%;}
   .longform-info{padding:0.7rem 0.8rem 0.9rem;}
   .longform-type{font-size:9px;}
   .longform-title{font-size:12px;}
@@ -560,7 +562,7 @@ footer {
 
   <div class="longform-grid">
 
-    <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_1" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
+    <div class="longform-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Charlie+rose.mp4" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
       <div class="longform-thumb">
         <video class="auto-thumb" preload="metadata" muted playsinline aria-label="Client project 1 thumbnail"></video>
         <div class="longform-thumb-inner">
@@ -573,7 +575,7 @@ footer {
       </div>
     </div>
 
-    <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_2" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
+    <div class="longform-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Kevin+Koza.mp4" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
       <div class="longform-thumb">
         <video class="auto-thumb" preload="metadata" muted playsinline aria-label="Client project 2 thumbnail"></video>
         <div class="longform-thumb-inner">
@@ -612,7 +614,7 @@ footer {
       </div>
     </div>
 
-    <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_5" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
+    <div class="longform-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Mira+Thimmayya.mp4" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
       <div class="longform-thumb">
         <video class="auto-thumb" preload="metadata" muted playsinline aria-label="Client project 5 thumbnail"></video>
         <div class="longform-thumb-inner">
@@ -625,7 +627,7 @@ footer {
       </div>
     </div>
 
-    <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_6" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
+    <div class="longform-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/dylancantley.mp4" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
       <div class="longform-thumb">
         <video class="auto-thumb" preload="metadata" muted playsinline aria-label="Client project 6 thumbnail"></video>
         <div class="longform-thumb-inner">
@@ -635,6 +637,19 @@ footer {
       <div class="longform-info">
         <div class="longform-type">Client project</div>
         <div class="longform-title">Client Project 6</div>
+      </div>
+    </div>
+
+    <div class="longform-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/sophie.mp4" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
+      <div class="longform-thumb">
+        <video class="auto-thumb" preload="metadata" muted playsinline aria-label="Client project 7 thumbnail"></video>
+        <div class="longform-thumb-inner">
+          <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="longform-info">
+        <div class="longform-type">Client project</div>
+        <div class="longform-title">Client Project 7</div>
       </div>
     </div>
 
