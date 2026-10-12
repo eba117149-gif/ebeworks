@@ -171,6 +171,7 @@ nav{
   position:relative;
 }
 .longform-thumb img, .reel-card img, .podcast-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.longform-thumb video.auto-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;background:#111;}
 .longform-thumb-inner, .reel-thumb-inner{position:relative;z-index:1;}
 .longform-thumb-inner{
   width:100%;height:100%;
@@ -522,7 +523,7 @@ footer {
 </section>
 
 <h2 class="hero-video-title">A Little About Me</h2>
-<div class="hero-video" id="hero-video" data-video-src="NEW_INTRO_VIDEO_URL">
+<div class="hero-video" id="hero-video" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/My+intro+final+Draft+2+new.mp4">
   <div class="hero-video-placeholder" id="hero-placeholder" style="background:url('https://f005.backblazeb2.com/file/ebe-portfolio/my+intro.png') center/cover no-repeat;">
     <div class="play-btn-big" id="hero-play">
       <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -561,7 +562,7 @@ footer {
 
     <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_1" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
       <div class="longform-thumb">
-        <img src="NEW_THUMBNAIL_URL_1" alt="Client project 1 thumbnail">
+        <video class="auto-thumb" preload="metadata" muted playsinline aria-label="Client project 1 thumbnail"></video>
         <div class="longform-thumb-inner">
           <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
@@ -574,7 +575,7 @@ footer {
 
     <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_2" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
       <div class="longform-thumb">
-        <img src="NEW_THUMBNAIL_URL_2" alt="Client project 2 thumbnail">
+        <video class="auto-thumb" preload="metadata" muted playsinline aria-label="Client project 2 thumbnail"></video>
         <div class="longform-thumb-inner">
           <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
@@ -613,7 +614,7 @@ footer {
 
     <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_5" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
       <div class="longform-thumb">
-        <img src="NEW_THUMBNAIL_URL_5" alt="Client project 5 thumbnail">
+        <video class="auto-thumb" preload="metadata" muted playsinline aria-label="Client project 5 thumbnail"></video>
         <div class="longform-thumb-inner">
           <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
@@ -626,7 +627,7 @@ footer {
 
     <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_6" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
       <div class="longform-thumb">
-        <img src="NEW_THUMBNAIL_URL_6" alt="Client project 6 thumbnail">
+        <video class="auto-thumb" preload="metadata" muted playsinline aria-label="Client project 6 thumbnail"></video>
         <div class="longform-thumb-inner">
           <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
@@ -756,6 +757,13 @@ footer {
     return '<div class="video-inline"><iframe src="' + src
       + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;display:block;"></iframe></div>';
   }
+
+  /* ── Auto thumbnails: first frame of each card's video ── */
+  document.querySelectorAll('.longform-card video.auto-thumb').forEach(function(v){
+    var card = v.closest('.longform-card');
+    var src = card && card.getAttribute('data-video-src');
+    if(src && src.indexOf('NEW_') === -1) v.src = src + '#t=0.5';
+  });
 
   /* ── Hero video ── */
   function playHero(src){
