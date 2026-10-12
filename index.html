@@ -29,7 +29,7 @@ nav{
 .nav-links{display:flex;gap:26px;align-items:center;}
 .nav-link{color:#555;text-decoration:none;font-size:14px;position:relative;transition:color 0.2s;}
 .nav-link:hover,
-.nav-link.active|{color:#111;}
+.nav-link.active{color:#111;}
 .nav-link::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:2px;background:#2563eb;transition:width 0.25s ease;}
 .nav-link:hover::after,
 .nav-link.active::after{width:100%;}
@@ -313,6 +313,41 @@ nav{
 .testi-author{font-size:12px;font-weight:600;color:#111;}
 .testi-role{font-size:11px;color:#999;}
 
+/* CHAT TESTIMONIALS */
+.chat-label{
+  display:flex;align-items:center;gap:12px;max-width:640px;margin:2.5rem auto 1.2rem;
+}
+.chat-label span{font-size:11px;font-weight:600;color:#999;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;}
+.chat-label i{flex:1;height:1px;background:#e8e8e8;}
+.chat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:640px;margin:0 auto;align-items:start;}
+.chat-card{
+  background:#fff;border:1px solid #eee;border-radius:16px;padding:12px;text-align:left;
+  box-shadow:0 6px 24px rgba(17,17,17,0.05);
+  transition:transform 0.2s ease,box-shadow 0.2s ease;
+}
+.chat-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,99,235,0.12);}
+.chat-quote{
+  font-size:14px;font-weight:600;color:#111;line-height:1.4;letter-spacing:-0.2px;
+  padding:4px 4px 12px;
+}
+.chat-quote::before{content:'\201C';color:#2563eb;font-size:22px;line-height:0;vertical-align:-6px;margin-right:2px;}
+.chat-shot{
+  display:block;width:100%;padding:0;border:0;background:#0b0f0e;
+  border-radius:12px;overflow:hidden;cursor:zoom-in;
+}
+.chat-shot img{display:block;width:100%;height:auto;}
+.chat-meta{
+  display:flex;align-items:center;gap:6px;padding:10px 4px 2px;
+  font-size:11px;color:#999;
+}
+.chat-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex:none;}
+.lightbox{
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;
+  display:none;align-items:center;justify-content:center;padding:1.5rem;cursor:zoom-out;
+}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:min(92vw,560px);max-height:88vh;border-radius:12px;}
+
 /* CTA */
 .cta{padding:4rem 1.5rem;text-align:center;border-top:1px solid #f0f0f0;}
 .cta-eyebrow{font-size:11px;color:#999;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;}
@@ -416,6 +451,11 @@ footer {
   .testi-text{font-size:12px;line-height:1.6;margin-bottom:0.6rem;}
   .testi-author{font-size:11px;}
   .testi-role{font-size:10px;}
+  .chat-label{margin:2rem auto 1rem;}
+  .chat-label span{font-size:10px;}
+  .chat-grid{grid-template-columns:1fr;gap:10px;max-width:100%;}
+  .chat-card{border-radius:12px;padding:10px;}
+  .chat-quote{font-size:13px;}
   .cta{padding:2.5rem 1rem;}
   .cta-eyebrow{font-size:10px;margin-bottom:0.8rem;}
   .cta h2{font-size:clamp(1.2rem,4vw,1.6rem);margin-bottom:0.6rem;line-height:1.2;}
@@ -482,7 +522,7 @@ footer {
 </section>
 
 <h2 class="hero-video-title">A Little About Me</h2>
-<div class="hero-video" id="hero-video" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/My+intro+final.mp4">
+<div class="hero-video" id="hero-video" data-video-src="NEW_INTRO_VIDEO_URL">
   <div class="hero-video-placeholder" id="hero-placeholder" style="background:url('https://f005.backblazeb2.com/file/ebe-portfolio/my+intro.png') center/cover no-repeat;">
     <div class="play-btn-big" id="hero-play">
       <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -509,7 +549,7 @@ footer {
 <!-- MY BEST WORK -->
 <section class="work-section" id="portfolio">
   <h2 class="work-title">My Best Work</h2>
-  <p class="work-subtitle">Long-form edits &amp; short-form reels that performed.</p>
+  <p class="work-subtitle">Long-form edits</p>
 
   <!-- LONGFORM VIDEOS -->
   <div class="section-divider" style="max-width:680px;margin:0 auto 1.2rem;">
@@ -519,9 +559,9 @@ footer {
 
   <div class="longform-grid">
 
-    <div class="longform-card playable" data-yt-id="b09caNlOZF4" data-yt-start="104" style="background:linear-gradient(160deg,#2a2a2a,#111);">
+    <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_1" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
       <div class="longform-thumb">
-        <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Youtube+video.png" alt="Client project 1 thumbnail">
+        <img src="NEW_THUMBNAIL_URL_1" alt="Client project 1 thumbnail">
         <div class="longform-thumb-inner">
           <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
@@ -532,9 +572,9 @@ footer {
       </div>
     </div>
 
-    <div class="longform-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Josef+2.mp4" style="background:linear-gradient(160deg,#0f2027,#203a43);">
+    <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_2" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
       <div class="longform-thumb">
-        <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Josef+2.png" alt="Client project 2 thumbnail">
+        <img src="NEW_THUMBNAIL_URL_2" alt="Client project 2 thumbnail">
         <div class="longform-thumb-inner">
           <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
@@ -568,6 +608,32 @@ footer {
       <div class="longform-info">
         <div class="longform-type">Client project</div>
         <div class="longform-title">Client Project 4</div>
+      </div>
+    </div>
+
+    <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_5" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
+      <div class="longform-thumb">
+        <img src="NEW_THUMBNAIL_URL_5" alt="Client project 5 thumbnail">
+        <div class="longform-thumb-inner">
+          <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="longform-info">
+        <div class="longform-type">Client project</div>
+        <div class="longform-title">Client Project 5</div>
+      </div>
+    </div>
+
+    <div class="longform-card playable" data-video-src="NEW_VIDEO_URL_6" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
+      <div class="longform-thumb">
+        <img src="NEW_THUMBNAIL_URL_6" alt="Client project 6 thumbnail">
+        <div class="longform-thumb-inner">
+          <div class="longform-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="longform-info">
+        <div class="longform-type">Client project</div>
+        <div class="longform-title">Client Project 6</div>
       </div>
     </div>
 
@@ -609,70 +675,21 @@ footer {
 
   </div>
 
-  <!-- SHORT-FORM REELS -->
+  <!-- SHORT-FORM REELS: add new reels here (own footage or written permission only).
+       Delete the comment markers (opening and closing) to activate it.
   <div class="section-divider" style="max-width:680px;margin:0 auto 1.2rem;">
     <span class="section-divider-label">Short-form</span>
     <div class="section-divider-line"></div>
   </div>
-
   <div class="reels-grid">
-
-    <div class="reel-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+1+Teach+a+man+to+fish-.mp4" style="background:linear-gradient(160deg,#1a1a2e,#0f3460);">
-      <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+1+teachaman+tofish.png" alt="Short 1 thumbnail">
-      <div class="reel-thumb-inner">
-        <div class="reel-thumb-icon">▶</div>
-      </div>
+    <div class="reel-card playable" data-video-src="NEW_REEL_URL">
+      <img src="NEW_REEL_THUMBNAIL_URL" alt="Short 1 thumbnail">
+      <div class="reel-thumb-inner"><div class="reel-thumb-icon">&#9654;</div></div>
       <div class="reel-overlay"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="reel-label">
-        <div class="reel-label-niche">Short 1</div>
-      </div>
+      <div class="reel-label"><div class="reel-label-niche">Short 1</div></div>
     </div>
-
-    <div class="reel-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+2+What+Is+an+ECN+Account+and+Why+Should+You+Care--.mp4" style="background:linear-gradient(160deg,#1a1a2e,#16213e);">
-      <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+2+what+is+ecn.png" alt="Short 2 thumbnail">
-      <div class="reel-thumb-inner">
-        <div class="reel-thumb-icon">▶</div>
-      </div>
-      <div class="reel-overlay"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="reel-label">
-        <div class="reel-label-niche">Short 2</div>
-      </div>
-    </div>
-
-    <div class="reel-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+3+1+Step+vs+2+Step.mp4" style="background:linear-gradient(160deg,#1a1a2e,#16213e);">
-      <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+3+1+step+vs+2+step.png" alt="Short 3 thumbnail">
-      <div class="reel-thumb-inner">
-        <div class="reel-thumb-icon">▶</div>
-      </div>
-      <div class="reel-overlay"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="reel-label">
-        <div class="reel-label-niche">Short 3</div>
-      </div>
-    </div>
-
-    <div class="reel-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+6+The+Virtual+Capital+Trap.mp4" style="background:linear-gradient(160deg,#0a0a0a,#1a1a1a);">
-      <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+6+the+virtual.png" alt="Short 4 thumbnail">
-      <div class="reel-thumb-inner">
-        <div class="reel-thumb-icon">▶</div>
-      </div>
-      <div class="reel-overlay"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="reel-label">
-        <div class="reel-label-niche">Short 4</div>
-      </div>
-    </div>
-
-    <div class="reel-card playable" data-video-src="https://f005.backblazeb2.com/file/ebe-portfolio/Video+1+the+headline+trade.mp4" style="background:linear-gradient(160deg,#0d1b2a,#1b263b);">
-      <img src="https://f005.backblazeb2.com/file/ebe-portfolio/Vid+1+the+headline.png" alt="Short 5 thumbnail">
-      <div class="reel-thumb-inner">
-        <div class="reel-thumb-icon">▶</div>
-      </div>
-      <div class="reel-overlay"><div class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="reel-label">
-        <div class="reel-label-niche">Short 5</div>
-      </div>
-    </div>
-
   </div>
+  -->
 </section>
 
 <!-- TESTIMONIALS -->
@@ -688,6 +705,25 @@ footer {
       <div class="testi-role">Upwork client · Video shorts</div>
     </div>
   </div>
+
+  <div class="chat-label"><i></i><span>Straight from the chat</span><i></i></div>
+  <div class="chat-grid">
+    <figure class="chat-card" style="margin:0;">
+      <div class="chat-quote">Thanks Ebe for great work</div>
+      <button class="chat-shot" type="button" data-full="testimonial-1.jpg" aria-label="Enlarge client message">
+        <img src="testimonial-1.jpg" alt="WhatsApp message from a client: Thanks Ebe for great work" loading="lazy">
+      </button>
+      <figcaption class="chat-meta"><span class="chat-dot"></span>Client message · WhatsApp</figcaption>
+    </figure>
+    <figure class="chat-card" style="margin:0;">
+      <div class="chat-quote">Got me some results and some clients</div>
+      <button class="chat-shot" type="button" data-full="testimonial-2.jpg" aria-label="Enlarge client message">
+        <img src="testimonial-2.jpg" alt="WhatsApp message from a client: yeah, got me some results and some clients" loading="lazy">
+      </button>
+      <figcaption class="chat-meta"><span class="chat-dot"></span>Client message · WhatsApp</figcaption>
+    </figure>
+  </div>
+  <div class="lightbox" id="lightbox"><img alt="Client message enlarged"></div>
 </section>
 
 <!-- CTA -->
@@ -782,8 +818,23 @@ footer {
     });
   });
 
+
+  /* ── Chat screenshot lightbox ── */
+  var lb = document.getElementById('lightbox');
+  if(lb){
+    var lbImg = lb.querySelector('img');
+    document.querySelectorAll('.chat-shot').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        lbImg.src = btn.getAttribute('data-full');
+        lb.classList.add('open');
+      });
+    });
+    lb.addEventListener('click', function(){ lb.classList.remove('open'); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') lb.classList.remove('open'); });
+  }
+
   /* ── Scroll animations ── */
-  var animated = document.querySelectorAll('.hero h1, .hero-sub, .stat, .work-title, .work-subtitle, .longform-card, .podcast-card, .reel-card, .testimonials h2');
+  var animated = document.querySelectorAll('.hero h1, .hero-sub, .stat, .work-title, .work-subtitle, .longform-card, .podcast-card, .reel-card, .testimonials h2, .chat-card');
   animated.forEach(function(item){ item.classList.add('animate'); });
 
   var observer = new IntersectionObserver(function(entries){
